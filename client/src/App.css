@@ -17,3 +17,12 @@
   display: block;
   padding-top: 100%;
 }
+
+.gameboard {
+  margin: 3rem;
+  padding: 20;
+}
+
+img {
+  object-fit: cover;
+}
