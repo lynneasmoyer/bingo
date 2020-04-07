@@ -10,12 +10,13 @@
 *[role='gridcell'] {
   outline: 2px solid #dddbda;
   position: relative;
+
 }
 
 *[role='gridcell']:before {
-  content: '';
   display: block;
-  padding-top: 100%;
+  width: 100px;
+  height: 100px;
 }
 
 .gameboard {
@@ -24,5 +25,9 @@
 }
 
 img {
-  object-fit: cover;
+  display: block;
+  margin: auto;
+  width: 70%;
+  padding: 5px;
+
 }
