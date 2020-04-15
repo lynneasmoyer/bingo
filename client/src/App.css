@@ -7,7 +7,7 @@
   outline: 4px solid #dddbda;
 }
 
-*[role='gridcell'] {
+*[c] {
   outline: 2px solid #dddbda;
   position: relative;
 
@@ -17,6 +17,7 @@
   display: block;
   width: 100px;
   height: 100px;
+  background-color: blue;
 }
 
 .gameboard {
@@ -30,4 +31,20 @@ img {
   width: 70%;
   padding: 5px;
 
+}
+
+.isSelected {
+  background-color: green;
+  display: block;
+  margin: auto;
+  width: 70%;
+  padding: 5px;
+}
+
+.notSelected {
+  background-color: white;
+  display: block;
+  margin: auto;
+  width: 70%;
+  padding: 5px;
 }

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { useState, Component } from 'react';
 import ReactDOM from 'react-dom';
-import Images from './Images';
+import Board from "./Board";
 import akita from "../images/akita.jpg";
 import aussie from "../images/Australian-Shepherd.jpg";
 import beagle from "../images/beagle.jpg";
@@ -29,88 +29,121 @@ import mastiff from "../images/mastiff.jpg";
 import sheepdog from "../images/sheepdog.jpg";
 
 
-
-const dogs = 
-[
-    akita, aussie, basset, beagle, bernese, boston, boxer, chihuahua, chow, spaniel
-]
-    
-
-
-class Game extends React.Component {
-    
-
-
-render() {
-    return (
-        <div class= "gameboard">
-            <h1>Bingo</h1>
-                { dogs.map ((dog, i) => {
-                    return (
-                        <div>
-                            <table role='grid'>
-                                <tbody>
-                                    <tr role= 'row'>
-                                        <td role='gridcell'> <img key = {i} src= {dog} /> </td>
-                                        <td role='gridcell'> <img key = {i+1} src= {dog} /> </td>
-                                        <td role='gridcell'> <img key = {i} src= {dog} /> </td>
-                                        <td role='gridcell'> <img key = {i} src= {dog} /> </td>
-                                        <td role='gridcell'> <img key = {i} src= {dog} /> </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-            
-                    );
-                })}
-            </div>
-    )
+const dogs = [
+    akita, 
+    aussie, 
+    basset, 
+    beagle, 
+    boston, 
+    boxer, 
+    chihuahua, 
+    chow, 
+    spaniel, 
+    collie, 
+    corgi, 
+    dachshund, 
+    dalmatian, 
+    bernese, 
+    poodle, 
+    heeler, 
+    mastiff, 
+    sheepdog, 
+    frenchie, 
+    german, 
+    goldie, 
+    greatdane, 
+    greyhound, 
+    husky, 
+    lab, 
+    shiba,
+];
 
 
-                            {/* <tr role='row'>
-                                <td role='gridcell'> Akita <img src={akita} alt= ""/> </td>
-                                <td role='gridcell'> <img src={aussie} alt= ""/> </td>
-                                <td role='gridcell'> <img src={beagle} alt= ""/> </td>
-                                <td role='gridcell'> <img src={dachshund} alt= ""/> </td>
-                                <td role='gridcell'> <img src={frenchie} alt= ""/> </td>
-                            </tr>
-                            <tr role='row'>
-                                <td role='gridcell'> <img src={bernese} alt= ""/> </td>
-                                <td role='gridcell'> <img src={chow} alt= ""/> </td>
-                                <td role='gridcell'> <img src={spaniel} alt= ""/> </td>
-                                <td role='gridcell'> <img src={german} alt= ""/> </td>
-                                <td role='gridcell'> <img src={goldie} alt= ""/> </td>
-                            </tr>
-                            <tr role='row'>
-                                <td role='gridcell'> <img src={greatdane} alt= ""/> </td>
-                                <td role='gridcell'> <img src={husky} alt= ""/> </td>
-                                <td role='gridcell'> <img src={shiba} alt= ""/> </td>
-                                <td role='gridcell'> <img src={lab} alt= "" /> </td>
-                                <td role='gridcell'> <img src={greyhound} alt= ""/> </td>
-                            </tr>
-                            <tr role='row'>
-                                <td role='gridcell'> <img src={boston} alt= ""/> </td>
-                                <td role='gridcell'> <img src={collie} alt= ""/> </td>
-                                <td role='gridcell'> <img src={chihuahua} alt= ""/> </td>
-                                <td role='gridcell'> <img src={dalmatian} alt= ""/> </td>
-                                <td role='gridcell'> <img src={heeler} alt= "" /> </td>
-                            </tr>
-                            <tr role='row'>
-                                <td role='gridcell'> <img src={poodle} alt= "" /> </td>
-                                <td role='gridcell'> <img src={sheepdog} alt= ""/> </td>
-                                <td role='gridcell'> <img src={corgi} alt= ""/> </td>
-                                <td role='gridcell'> <img src={basset} alt= ""/> </td>
-                                <td role='gridcell'> <img src={mastiff} alt= ""/> </td>
-                            </tr> */}
-                        {/* </tbody>
-                    </table>
-                </div>
-        </div>
-    ) */}
-
-    
+function shuffleArray(array) {
+    let i = array.length - 1;
+    for (; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
+    return array;
 }
+
+const shuffledDogs = shuffleArray(dogs)
+
+
+
+const Game = ({handleClick}) => {
+
+        return (
+            <div className= "gameboard">
+                            <div>
+                                <table role='grid' className="table">
+                                    <tbody>
+                                        <tr role= 'row'>
+                                            <td role='gridcell'> <img  onClick={handleClick} src= {shuffledDogs[0]} alt= "" />  </td>
+                                            <td role='gridcell'>  <img className = "notSelected" onClick={handleClick} src= {shuffledDogs[1]} alt= "" /> </td>
+                                            <td role='gridcell'> <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[2]} alt= "" />  </td>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[3]} alt= "" />  </td>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[4]} alt= "" /> </td>
+                                        </tr>
+                                        <tr role= 'row'>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[5]} alt= "" /> </td>
+                                            <td role='gridcell'>  <img className = "notSelected" onClick={handleClick} src= {shuffledDogs[6]} alt= "" /> </td>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[7]} alt= "" /> </td>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[8]} alt= "" /> </td>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[9]} alt= "" /> </td>
+                                        </tr>
+                                        <tr role= 'row'>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[10]} alt= "" /> </td>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[11]} alt= "" /> </td>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[12]} alt= "" /> </td>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[13]} alt= "" /> </td>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[14]} alt= "" /> </td>
+                                        </tr>
+                                        <tr role= 'row'>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[15]} alt= "" /> </td>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[16]} alt= "" /> </td>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[17]} alt= "" /> </td>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[18]} alt= "" /> </td>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[19]} alt= "" /> </td>
+                                        </tr>
+                                        <tr role= 'row'>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[20]} alt= "" /> </td>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[21]} alt= "" /> </td>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[22]} alt= "" /> </td>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[23]} alt= "" /> </td>
+                                            <td role='gridcell'>  <img  className = "notSelected" onClick={handleClick} src= {shuffledDogs[24]} alt= "" /> </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                    </div>
+
+        );
+    }
+
+
+// function calculateWinner(squares) {
+//     const lines = [
+//         [0, 1, 2],
+//         [3, 4, 5],
+//         [6, 7, 8],
+//         [0, 3, 6],
+//         [1, 4, 7],
+//         [2, 5, 8],
+//         [0, 4, 8],
+//         [2, 4, 6],
+//     ];
+//     for (let i = 0; i < lines.length; i++) {
+//         const [a, b, c] = lines[i];
+//         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+//         return squares[a];
+//         }
+//     }
+//     return null;
+// }
 
 
 export default Game;

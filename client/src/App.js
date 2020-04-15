@@ -2,6 +2,7 @@ import React from 'react';
 import { Router } from '@reach/router';
 import Main from './views/Main';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
